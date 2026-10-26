@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saffron Table | Restaurant Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<aside class="side">
+  <div class="brand">Saffron Table</div>
+  <nav>
+    <button data-view="dashboard" class="on">Dashboard</button>
+    <button data-view="orders">Orders</button>
+    <button data-view="tables">Tables</button>
+    <button data-view="menu">Menu</button>
+  </nav>
+  <button id="reset" class="ghost">Reset demo data</button>
+</aside>
+
+<main>
+  <section id="dashboard" class="view on">
+    <h1>Today at a glance</h1>
+    <div class="stats" id="stats"></div>
+    <div class="two">
+      <div class="panel"><h2>Top sellers</h2><ol id="top"></ol></div>
+      <div class="panel"><h2>Recent orders</h2><div id="recent"></div></div>
+    </div>
+  </section>
+
+  <section id="orders" class="view">
+    <h1>Orders</h1>
+    <div class="pos">
+      <div>
+        <div class="bar">
+          <input id="search" placeholder="Search dishes">
+          <div id="chips" class="chips"></div>
+        </div>
+        <div id="pick" class="grid"></div>
+      </div>
+      <div class="panel cart">
+        <h2>New order</h2>
+        <label>Table <select id="tableSel"></select></label>
+        <div id="cart"></div>
+        <div class="tot"><span>Total incl. 5% GST</span><b id="total">₹0</b></div>
+        <button id="place" class="btn">Place order</button>
+      </div>
+    </div>
+    <h2 class="gap">Active orders</h2>
+    <div id="active" class="grid cards"></div>
+  </section>
+
+  <section id="tables" class="view">
+    <h1>Tables</h1>
+    <p class="sub">Select a free table to start an order.</p>
+    <div id="tableGrid" class="floor"></div>
+  </section>
+
+  <section id="menu" class="view">
+    <div class="row"><h1>Menu</h1><button id="addItem" class="btn">Add dish</button></div>
+    <div class="panel"><table id="menuTable"></table></div>
+  </section>
+</main>
+
+<dialog id="dlg">
+  <form method="dialog" id="form">
+    <h2 id="dlgTitle">Add dish</h2>
+    <label>Name <input name="name" required></label>
+    <label>Category
+      <select name="cat"><option>Starters</option><option>Mains</option><option>Breads</option><option>Desserts</option><option>Drinks</option></select>
+    </label>
+    <label>Price (₹) <input name="price" type="number" min="1" required></label>
+    <label>Emoji <input name="emoji" maxlength="2" value="🍽️"></label>
+    <div class="row"><button value="cancel" class="ghost dark" formnovalidate>Cancel</button><button class="btn" value="ok">Save dish</button></div>
+  </form>
+</dialog>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
